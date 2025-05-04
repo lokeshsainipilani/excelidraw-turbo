@@ -24,5 +24,6 @@ export type Shape = {
     startY:number,
     endX:number,
     endY:number,
-    color:string
+    color:string,
+    value:string
 } 
