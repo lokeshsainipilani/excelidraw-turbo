@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "build": "tsc -b",
-    "start": "node ./dist/index.js",
-    "dev": " cd ../../packages/db && npx prisma generate && cd ../../apps/ws-backend && npm run build && npm run start"
+    "dev": "tsc -b && node dist/index.js"
   },
   "keywords": [],
   "author": "",

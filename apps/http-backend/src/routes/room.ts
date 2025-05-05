@@ -7,20 +7,21 @@ const roomRouter = Router();
 const prisma = new PrismaClient()
 roomRouter.post("/", middleware, async (req:customRequest, res:Response)=>{
     const body = req.body;
-    const {success} = CreateRoomSchema.safeParse(body);
+    const parsedData = CreateRoomSchema.safeParse(body);
 
-    if(!success){
+    if(!parsedData.success){
         res.json({message:"incorrect inputs"})
         return;
     }
     
     const userId = req.userId
+
     const room = await prisma.room.create({
-        data:{
-            slug: body.name,
-            adminId:userId
-        }
-    })
+            data: {
+                slug: parsedData.data.name,
+                adminId: userId
+            }
+        })
     res.json({roomId:room.id})
 })
 

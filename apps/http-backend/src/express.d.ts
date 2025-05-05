@@ -1,4 +1,4 @@
-declare namespace Exress {
+declare namespace Express {
     interface Request{
         userId:string
     }

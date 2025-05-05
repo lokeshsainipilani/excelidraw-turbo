@@ -2,7 +2,7 @@ import { JWT_SECRET } from "@repo/config/config";
 import { NextFunction, Request, Response } from "express";
 import jwt from "jsonwebtoken"
 export interface customRequest extends Request {
-    userId?: string
+    userId: string
 }
 
 export function middleware(req:customRequest, res:Response, next:NextFunction){

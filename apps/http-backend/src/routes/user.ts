@@ -1,9 +1,10 @@
 import   { Router }  from "express";
 import {CreateUserSchema} from "@repo/common/types"
-import {PrismaClient} from "@repo/db/client";
+//import {PrismaClient} from "@repo/db/client";
 import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"
 import { JWT_SECRET } from "@repo/config/config";
+import { PrismaClient } from "@repo/db/client";
 
 
 const userRouter = Router();
@@ -30,12 +31,12 @@ userRouter.post("/signup", async (req, res)=>{
             return;
         }
 
-        const hashedPassword = bcrypt.hash(body.password,10);
+        const hashedPassword = bcrypt.hash(body.password, 10);
 
         const user = await prisma.user.create({
             data:{
                 name:body.name,
-                password:hashedPassword,
+                password:body.password,
                 email:body.email
             }
         })
