@@ -19,11 +19,15 @@ export type lineWidths = 1 | 2 | 3 | 4 | 5 | 10;
 export type Shape = {
     id:string,
     type: Tool,
-    points: {x:number, y:number}[],
     startX:number,
     startY:number,
     endX:number,
     endY:number,
     color:string,
-    value:string
+    value?:string,
+    linewidth:number,
+    points?: {
+      x: number;
+      y: number;
+  }[]
 } 

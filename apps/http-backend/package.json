@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc -b",
+    "dev": "cd ../../packages/db && npx prisma generate && cd ../../apps/http-backend && tsc -b && node ./dist/index.js"
   },
   "keywords": [],
   "author": "",

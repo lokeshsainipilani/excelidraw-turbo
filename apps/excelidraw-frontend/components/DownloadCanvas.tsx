@@ -3,7 +3,7 @@
 import React from "react"
 import { Button } from "./ui/button"
 
-const DownloadCanvas = ({canvasRef}:{canvasRef:React.RefObject<HTMLCanvasElement | null> })=>{
+export const DownloadCanvas = ({canvasRef}:{canvasRef:React.RefObject<HTMLCanvasElement | null> })=>{
     const downloadCanvas = ()=>{
         const canvas = canvasRef.current;
         if(!canvas) return;
