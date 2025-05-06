@@ -9,12 +9,12 @@ import { useState } from "react";
 interface ToolbarProps{
     color: string,
     setColor: (color: string)=> void | undefined,
-    linewidth: lineWidths,
+    lineWidth: lineWidths,
     setLinewidth:(lineWidth: lineWidths) => void
 }
  export type Tool = "circle" | "rectangle";
 
-const Toolbar = ({color, setColor, linewidth, setLinewidth}:ToolbarProps)=>{
+const Toolbar = ({color, setColor, lineWidth, setLinewidth}:ToolbarProps)=>{
     const [selectedTool, setSelectedTool] = useState<Tool>();
 
     return (
@@ -31,7 +31,7 @@ const Toolbar = ({color, setColor, linewidth, setLinewidth}:ToolbarProps)=>{
                
             </div>
             <div className="flex items-center gap-2">
-                <ColorPanel selectedColor={color} setSelectedColor={setColor} linewidth={linewidth} setLinewidth={setLinewidth} />
+                <ColorPanel selectedColor={color} setSelectedColor={setColor} linewidth={lineWidth} setLinewidth={setLinewidth} />
             </div>
         </div>
     )

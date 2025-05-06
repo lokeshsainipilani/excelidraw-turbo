@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import { Game } from "./draw/Game";
+import { colorOptions, Game, lineWidths } from "./draw/Game";
+import Toolbar from "./Toolbar";
 
 export type Tool = "circle" | "rectangle" ;
 
@@ -13,10 +14,15 @@ export function Canvas({
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const [game, setGame] = useState<Game>();
     const [selectedTool, setSelectedTool] = useState<Tool>("circle")
+    const [color, setSelectedColor] = useState<colorOptions>("#000000");
+    const [lineWidth, setLinewidth] = useState<lineWidths>(1)
 
     useEffect(() => {
         game?.setTool(selectedTool);
-    }, [selectedTool, game]);
+        game?.setSelectedColor(color);
+        
+        game?.setLineWidth(lineWidth);
+    }, [selectedTool, game, color, lineWidth]);
 
     useEffect(() => {
 
@@ -32,11 +38,14 @@ export function Canvas({
 
     }, [canvasRef]);
 
-    return <div style={{
-        height: "100vh",
-        overflow: "hidden"
-    }}>
-        <canvas ref={canvasRef} width={window.innerWidth} height={window.innerHeight}></canvas>
-        <Topbar setSelectedTool={setSelectedTool} selectedTool={selectedTool} />
+    return <div className="min-h-screen flex flex-col items-center">
+    
+    <div className="flex flex-col-2">
+    <Toolbar color={color} setColor={setSelectedColor} lineWidth={lineWidth} setLinewidth={setLinewidth} />
+    <canvas ref={canvasRef}  width={window.innerWidth} height={window.innerHeight}  />
     </div>
+    
+    
+</div>
 }
+export default Canvas

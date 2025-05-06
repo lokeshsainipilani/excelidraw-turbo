@@ -73,6 +73,17 @@ export class Game{
         this.clicked = false
 
     }
+    setTool(tool: "circle" | "rectangle") {
+        this.selectedTool = tool;
+    }
+
+    setSelectedColor(color: colorOptions){
+        this.selectedColor = color;
+    }
+
+    setLineWidth(lineWidth:lineWidths){
+        this.lineWidth = lineWidth
+    }
 
     destroy() {
         this.canvas.removeEventListener("mousedown", this.mouseDownHandler)
@@ -183,9 +194,7 @@ export class Game{
 
     }
 
-    setTool(tool: "circle" | "rectangle") {
-        this.selectedTool = tool;
-    }
+    
 
     async initDraw(canvas: HTMLCanvasElement, roomId: string, socket: WebSocket){
         const ctx = canvas.getContext("2d");
