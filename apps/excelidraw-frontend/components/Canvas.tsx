@@ -11,7 +11,7 @@ const Canvas = ({roomId, socket}:{roomId:string, socket:WebSocket})=>{
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const [game, setGame] = useState<Game>();
 
-    const [color, setSelectedColor] = useState<colorOptions>("#FFFFFF");
+    const [color, setSelectedColor] = useState<colorOptions>("#000000");
     const [linewidth, setLinewidth] = useState<lineWidths>(1)
     const {selectedTool, setSelectedTool} = useSelectedTool();
 
@@ -38,10 +38,15 @@ const Canvas = ({roomId, socket}:{roomId:string, socket:WebSocket})=>{
     
     return(
         <div className="min-h-screen flex flex-col items-center">
-            <DownloadCanvas canvasRef={canvasRef}/>
+            <div className="flex flex-col-2">
+                <DownloadCanvas canvasRef={canvasRef}/>
+            </div>
+            <div className="flex flex-col-2">
             <Toolbar color={color} setColor={setSelectedColor} linewidth={linewidth} setLinewidth={setLinewidth} />
-            <canvas ref={canvasRef} className={cn("block m-auto bg-[rgb(19, 22, 29)]", selectedTool==="move"? "cursor-move": "cursor-crosshair",
-                selectedTool==="delete"? "cursor-pointer": "")} onMouseUp={()=>{setSelectedTool("move")}} />
+            <canvas ref={canvasRef}  width={window.innerWidth} height={window.innerHeight}  />
+            </div>
+            
+            
         </div>
     )
 

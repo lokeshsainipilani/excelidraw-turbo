@@ -1,5 +1,5 @@
-import { Colors, lineWidths } from "../lib/types"
-import { cn } from "../lib/utils"
+import { Colors, lineWidths } from "../components/draw/Game"
+import { cn } from "./button"
 
 interface ColorPanelProps {
     selectedColor:string,
